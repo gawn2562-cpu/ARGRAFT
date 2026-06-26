@@ -341,6 +341,97 @@
   }
   .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
   .toast svg{ width:14px; height:14px; }
+
+  /* ---------- premium badges & locks ---------- */
+  .tool-chip{ position:relative; }
+  .lock-badge{
+    position:absolute; top:-3px; right:-3px; width:16px; height:16px; border-radius:50%;
+    background:var(--tape); display:flex; align-items:center; justify-content:center; border:2px solid var(--surface);
+  }
+  .lock-badge svg{ width:8px; height:8px; color:#1a1206; }
+  .color-dot{ position:relative; }
+  .color-dot .lock-badge{ width:14px; height:14px; top:-4px; right:-4px; }
+  .color-dot .lock-badge svg{ width:7px; height:7px; }
+
+  .plus-pill{
+    display:inline-flex; align-items:center; gap:4px; font-family:'JetBrains Mono', monospace; font-size:9.5px;
+    font-weight:600; letter-spacing:0.04em; color:#1a1206; background:var(--tape); padding:2px 6px; border-radius:8px;
+  }
+
+  /* ---------- profile upgrade card ---------- */
+  .upgrade-card{
+    background:linear-gradient(135deg, rgba(154,77,255,0.16), rgba(57,230,220,0.10));
+    border:1px solid var(--violet-dim); border-radius:14px; padding:14px 16px; margin-bottom:18px;
+    display:flex; align-items:center; gap:12px; cursor:pointer;
+  }
+  .upgrade-card .uic{
+    width:38px; height:38px; border-radius:10px; background:var(--violet); flex:none;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .upgrade-card .uic svg{ width:18px; height:18px; color:#fff; }
+  .upgrade-card .ut{ font-size:13px; font-weight:600; }
+  .upgrade-card .ud{ font-size:11.5px; color:var(--text-dim); margin-top:2px; }
+  .upgrade-card.is-plus{ background:linear-gradient(135deg, rgba(242,210,75,0.16), rgba(154,77,255,0.10)); border-color:rgba(242,210,75,0.4); }
+  .upgrade-card.is-plus .uic{ background:var(--tape); }
+  .upgrade-card.is-plus .uic svg{ color:#1a1206; }
+
+  /* ---------- upgrade modal ---------- */
+  .modal-overlay{
+    position:absolute; inset:0; background:rgba(7,7,10,0.72); z-index:70; display:flex; align-items:flex-end;
+    opacity:0; pointer-events:none; transition:opacity .2s ease;
+  }
+  .modal-overlay.open{ opacity:1; pointer-events:auto; }
+  .modal-card{
+    width:100%; background:var(--surface); border-top:1px solid var(--line-strong); border-radius:22px 22px 0 0;
+    padding:22px 20px calc(20px + env(safe-area-inset-bottom,0px)); transform:translateY(100%); transition:transform .25s ease;
+    max-height:90%; overflow-y:auto;
+  }
+  .modal-overlay.open .modal-card{ transform:translateY(0); }
+  .modal-handle{ width:32px; height:4px; background:var(--line-strong); border-radius:3px; margin:0 auto 16px; }
+  .modal-head{ text-align:center; margin-bottom:18px; }
+  .modal-head .badge{
+    display:inline-flex; align-items:center; gap:5px; font-family:'JetBrains Mono', monospace; font-size:11px;
+    color:#1a1206; background:var(--tape); padding:4px 10px; border-radius:12px; margin-bottom:10px; font-weight:600;
+  }
+  .modal-head h2{ font-size:19px; font-weight:600; margin-bottom:6px; }
+  .modal-head p{ font-size:12.5px; color:var(--text-dim); line-height:1.5; padding:0 8px; }
+  .perk-list{ display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+  .perk-row{ display:flex; align-items:flex-start; gap:10px; }
+  .perk-ic{ width:30px; height:30px; border-radius:8px; background:var(--surface-2); border:1px solid var(--line-strong); display:flex; align-items:center; justify-content:center; flex:none; margin-top:1px; }
+  .perk-ic svg{ width:14px; height:14px; color:var(--cyan); }
+  .perk-t{ font-size:13px; font-weight:500; }
+  .perk-d{ font-size:11.5px; color:var(--text-faint); margin-top:1px; }
+  .plan-row{ display:flex; gap:10px; margin-bottom:16px; }
+  .plan-opt{
+    flex:1; border:1px solid var(--line-strong); border-radius:14px; padding:14px 10px; text-align:center; position:relative;
+    background:var(--surface-2); cursor:pointer;
+  }
+  .plan-opt.selected{ border-color:var(--violet); background:rgba(154,77,255,0.1); }
+  .plan-opt .tag{
+    position:absolute; top:-9px; left:50%; transform:translateX(-50%); background:var(--cyan); color:var(--ink);
+    font-family:'JetBrains Mono', monospace; font-size:9px; font-weight:600; padding:2px 7px; border-radius:8px; white-space:nowrap;
+  }
+  .plan-opt .price{ font-size:17px; font-weight:600; margin-top:4px; }
+  .plan-opt .per{ font-size:10.5px; color:var(--text-faint); }
+  .plan-opt .name{ font-size:11px; color:var(--text-dim); letter-spacing:0.04em; text-transform:uppercase; }
+  .modal-foot-note{ font-size:10.5px; color:var(--text-faint); text-align:center; margin-bottom:14px; line-height:1.5; }
+  .modal-close{ position:absolute; top:18px; right:16px; }
+
+  /* ---------- glyph pack shop ---------- */
+  .pack-grid{ display:flex; flex-direction:column; gap:10px; margin-bottom:18px; }
+  .pack-row{
+    display:flex; align-items:center; gap:12px; background:var(--surface-2); border:1px solid var(--line-strong);
+    border-radius:12px; padding:10px 12px;
+  }
+  .pack-thumbs{ display:flex; flex:none; }
+  .pack-thumbs .pt{ width:30px; height:30px; border-radius:50%; background:var(--ink); border:2px solid var(--surface-2); display:flex; align-items:center; justify-content:center; margin-left:-10px; }
+  .pack-thumbs .pt:first-child{ margin-left:0; }
+  .pack-thumbs .pt svg{ width:14px; height:14px; }
+  .pack-meta{ flex:1; min-width:0; }
+  .pack-meta .t{ font-size:12.5px; font-weight:500; }
+  .pack-meta .d{ font-size:10.5px; color:var(--text-faint); }
+  .pack-buy{ flex:none; padding:7px 12px; border-radius:10px; background:var(--violet); color:#fff; font-size:11.5px; font-weight:600; border:none; }
+  .pack-buy.owned{ background:var(--surface); color:var(--cyan); border:1px solid var(--cyan-dim); }
 </style>
 </head>
 <body>
@@ -521,6 +612,7 @@
           <div class="stat-card"><div class="num" id="stat-views">0</div><div class="lbl">views</div></div>
           <div class="stat-card"><div class="num">6</div><div class="lbl">cities</div></div>
         </div>
+        <div id="profile-upgrade-card"></div>
         <div class="profile-tabs">
           <button class="ptab active" data-tab="wall">wall</button>
           <button class="ptab" data-tab="saved">saved</button>
@@ -570,6 +662,70 @@
       <span id="toast-text">Posted</span>
     </div>
 
+    <!-- ============ UPGRADE MODAL (ARGraft+) ============ -->
+    <div class="modal-overlay" id="upgrade-modal">
+      <div class="modal-card">
+        <div class="modal-handle"></div>
+        <button class="icon-btn modal-close" id="upgrade-close" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="modal-head">
+          <div class="badge">ARGRAFT+</div>
+          <h2>Make your pieces hit harder</h2>
+          <p>Placing art is always free. ARGraft+ just adds extra shine on top — your wall stays free no matter what.</p>
+        </div>
+        <div class="perk-list">
+          <div class="perk-row">
+            <div class="perk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+            <div><div class="perk-t">Animated glyphs</div><div class="perk-d">pulse, rotate &amp; glow-cycle effects on any shape</div></div>
+          </div>
+          <div class="perk-row">
+            <div class="perk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2a10 10 0 100 20 4 4 0 000-8H9a3 3 0 01-3-3 9.97 9.97 0 016-9z"/></svg></div>
+            <div><div class="perk-t">Full color palette</div><div class="perk-d">gradients &amp; custom hex, not just the 6 basics</div></div>
+          </div>
+          <div class="perk-row">
+            <div class="perk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+            <div><div class="perk-t">24h featured boost</div><div class="perk-d">your piece shows first in nearby feeds for a day</div></div>
+          </div>
+          <div class="perk-row">
+            <div class="perk-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="16" r="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+            <div><div class="perk-t">Profile customization</div><div class="perk-d">banner art &amp; a custom avatar frame</div></div>
+          </div>
+        </div>
+        <div class="plan-row" id="plan-row">
+          <div class="plan-opt" data-plan="monthly">
+            <div class="name">monthly</div>
+            <div class="price">$2.99</div>
+            <div class="per">per month</div>
+          </div>
+          <div class="plan-opt selected" data-plan="yearly">
+            <div class="tag">save 35%</div>
+            <div class="name">yearly</div>
+            <div class="price">$22.99</div>
+            <div class="per">per year</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="upgrade-confirm" style="width:100%; padding:13px 0; font-size:14px;">unlock ARGraft+</button>
+        <div class="modal-foot-note">cancel anytime · creating &amp; viewing AR art is always free, with or without this</div>
+      </div>
+    </div>
+
+    <!-- ============ GLYPH PACK SHOP MODAL ============ -->
+    <div class="modal-overlay" id="shop-modal">
+      <div class="modal-card">
+        <div class="modal-handle"></div>
+        <button class="icon-btn modal-close" id="shop-close" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="modal-head">
+          <h2>Glyph packs</h2>
+          <p>One-time purchase, yours forever. No subscription needed — buy just the packs you want.</p>
+        </div>
+        <div class="pack-grid" id="pack-grid"></div>
+        <div class="modal-foot-note">the 6 starter shapes are always free for everyone</div>
+      </div>
+    </div>
+
   </div>
   <div class="stage-label">argraft — working prototype</div>
 </div>
@@ -586,6 +742,34 @@ const GLYPHS = {
   wave: (c1,c2)=>`<svg viewBox="0 0 200 200"><path d="M30 100 q40 -60 70 0 q30 60 70 0" fill="none" stroke="${c1}" stroke-width="9"/></svg>`,
   octo: (c1,c2)=>`<svg viewBox="0 0 200 200"><polygon points="100,30 170,100 100,170 30,100" fill="none" stroke="${c2}" stroke-width="9"/></svg>`,
 };
+
+// premium glyph packs — purchased individually, one-time, never required for the free loop
+const PACKS = {
+  creature: {
+    name: 'creature pack', price: '$1.99',
+    glyphs: {
+      cat: (c1,c2)=>`<svg viewBox="0 0 200 200"><path d="M60 70 L40 30 L75 55 Z" fill="none" stroke="${c1}" stroke-width="7"/><path d="M140 70 L160 30 L125 55 Z" fill="none" stroke="${c1}" stroke-width="7"/><circle cx="100" cy="100" r="55" fill="none" stroke="${c2}" stroke-width="7"/></svg>`,
+      bird: (c1,c2)=>`<svg viewBox="0 0 200 200"><path d="M30 110 Q100 40 170 110 Q100 90 30 110Z" fill="none" stroke="${c1}" stroke-width="7"/><circle cx="150" cy="95" r="6" fill="${c2}"/></svg>`,
+    }
+  },
+  lettering: {
+    name: 'lettering pack', price: '$2.99',
+    glyphs: {
+      tag: (c1,c2)=>`<svg viewBox="0 0 200 200"><text x="100" y="120" font-family="monospace" font-size="64" font-weight="700" text-anchor="middle" fill="none" stroke="${c1}" stroke-width="3">AR</text></svg>`,
+      slash: (c1,c2)=>`<svg viewBox="0 0 200 200"><line x1="40" y1="160" x2="160" y2="40" stroke="${c1}" stroke-width="10"/><line x1="60" y1="160" x2="180" y2="40" stroke="${c2}" stroke-width="6"/></svg>`,
+    }
+  },
+  thai: {
+    name: 'thai pattern pack', price: '$1.99',
+    glyphs: {
+      lotus: (c1,c2)=>`<svg viewBox="0 0 200 200"><path d="M100 150 Q60 100 100 50 Q140 100 100 150Z" fill="none" stroke="${c1}" stroke-width="6"/><path d="M100 150 Q70 110 100 70 Q130 110 100 150Z" fill="none" stroke="${c2}" stroke-width="5"/></svg>`,
+      spiral: (c1,c2)=>`<svg viewBox="0 0 200 200"><path d="M100 100 m0 -50 a50 50 0 0 1 0 100 a35 35 0 0 1 0 -70 a20 20 0 0 1 0 40" fill="none" stroke="${c1}" stroke-width="6"/></svg>`,
+    }
+  },
+};
+
+const FREE_COLORS = ['#39E6DC','#9A4DFF','#F2D24B','#E2574C','#5CD86A','#FFFFFF'];
+const PLUS_COLORS = ['#FF6FB5','#FFA63D','#3D7DFF','#C9FF3D','#FF3D9A','#7DFFE3'];
 
 const PHOTOS = [
   "https://images.unsplash.com/photo-1545989253-02cc26577f88?q=80&w=900&auto=format&fit=crop",
@@ -609,6 +793,9 @@ let state = {
     visibility: 'public',
   },
   myHandle: '@neon.ghost',
+  isPlus: false,
+  selectedPlan: 'yearly',
+  ownedPacks: [],   // e.g. ['creature']
 };
 
 // seed pieces (mocked but mutable — Create adds to this array for real)
@@ -667,7 +854,7 @@ function renderHome(){
   const p = pieces[state.homeIndex];
   $('#home-img').src = p.photo;
   $('#home-img').alt = p.title;
-  $('#home-glyph').innerHTML = GLYPHS[p.glyph](p.c1, p.c2);
+  $('#home-glyph').innerHTML = allOwnedGlyphs()[p.glyph](p.c1, p.c2);
   $('#home-title').textContent = p.title;
   $('#home-artist').textContent = p.artist;
   $('#home-count').textContent = `${state.homeIndex+1} / ${pieces.length}`;
@@ -705,7 +892,7 @@ function renderMap(){
     .slice().sort((a,b)=> parseFloat(a.dist) - parseFloat(b.dist))
     .map(p=>`
       <button class="sheet-row" data-id="${p.id}">
-        <div class="sheet-thumb">${GLYPHS[p.glyph](p.c1,p.c2).replace('viewBox="0 0 200 200"','viewBox="0 0 200 200" width="16" height="16"')}</div>
+        <div class="sheet-thumb">${allOwnedGlyphs()[p.glyph](p.c1,p.c2).replace('viewBox="0 0 200 200"','viewBox="0 0 200 200" width="16" height="16"')}</div>
         <div class="sheet-meta"><div class="t">${p.title}</div><div class="d">${p.artist}</div></div>
         <div class="sheet-dist">${p.dist}</div>
       </button>
@@ -731,10 +918,18 @@ const TOOLS = [
   { key:'place', label:'place art', icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg>` },
   { key:'text', label:'text', icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>` },
   { key:'color', label:'color', icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2a10 10 0 100 20 4 4 0 000-8H9a3 3 0 01-3-3 9.97 9.97 0 016-9z"/></svg>` },
-  { key:'sticker', label:'sticker', icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 15l4-4 4 4 5-5 3 3"/></svg>` },
+  { key:'packs', label:'packs', icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 15l4-4 4 4 5-5 3 3"/></svg>` },
 ];
-const COLORS = ['#39E6DC','#9A4DFF','#F2D24B','#E2574C','#5CD86A','#FFFFFF'];
 const SHAPES = Object.keys(GLYPHS);
+
+function allOwnedGlyphs(){
+  // free shapes + any glyphs from purchased packs
+  let combined = { ...GLYPHS };
+  state.ownedPacks.forEach(packKey=>{
+    Object.assign(combined, PACKS[packKey].glyphs);
+  });
+  return combined;
+}
 
 function renderCreateChrome(){
   $('#create-tool-row').innerHTML = TOOLS.map(t=>
@@ -742,17 +937,24 @@ function renderCreateChrome(){
   ).join('');
   $$('.tool-chip').forEach(chip=>{
     chip.addEventListener('click', ()=>{
-      state.create.tool = chip.dataset.tool;
+      const key = chip.dataset.tool;
+      if(key === 'packs'){ openShopModal(); return; }
+      state.create.tool = key;
       renderCreateChrome();
       $('#create-color-row').style.display = state.create.tool === 'color' ? 'flex' : 'none';
     });
   });
   $('#create-color-row').style.display = state.create.tool === 'color' ? 'flex' : 'none';
-  $('#create-color-row').innerHTML = COLORS.map(c=>
-    `<button class="color-dot ${state.create.color1===c?'selected':''}" data-color="${c}" style="background:${c};"></button>`
-  ).join('');
+
+  const allColors = FREE_COLORS.concat(PLUS_COLORS);
+  $('#create-color-row').innerHTML = allColors.map(c=>{
+    const locked = PLUS_COLORS.includes(c) && !state.isPlus;
+    const lockIcon = locked ? `<div class="lock-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></div>` : '';
+    return `<button class="color-dot ${state.create.color1===c?'selected':''}" data-color="${c}" data-locked="${locked}" style="background:${c};">${lockIcon}</button>`;
+  }).join('');
   $$('.color-dot').forEach(dot=>{
     dot.addEventListener('click', ()=>{
+      if(dot.dataset.locked === 'true'){ openUpgradeModal(); return; }
       state.create.color1 = dot.dataset.color;
       renderCreateChrome();
       renderCreatePreview();
@@ -762,12 +964,15 @@ function renderCreateChrome(){
 }
 
 function renderCreatePreview(){
-  $('#create-preview-glyph').innerHTML = GLYPHS[state.create.glyph](state.create.color1, state.create.color2);
+  const lib = allOwnedGlyphs();
+  $('#create-preview-glyph').innerHTML = lib[state.create.glyph](state.create.color1, state.create.color2);
 }
 
 $('#create-shuffle').addEventListener('click', ()=>{
+  const lib = allOwnedGlyphs();
+  const keys = Object.keys(lib);
   let next;
-  do{ next = SHAPES[Math.floor(Math.random()*SHAPES.length)]; } while(next === state.create.glyph);
+  do{ next = keys[Math.floor(Math.random()*keys.length)]; } while(next === state.create.glyph && keys.length > 1);
   state.create.glyph = next;
   renderCreatePreview();
 });
@@ -847,16 +1052,33 @@ function renderProfile(){
   const totalViews = mine.reduce((sum,p)=> sum + p.views, 0);
   $('#stat-views').textContent = totalViews >= 1000 ? (totalViews/1000).toFixed(1)+'k' : totalViews;
 
+  const cardSlot = $('#profile-upgrade-card');
+  if(state.isPlus){
+    cardSlot.innerHTML = `
+      <div class="upgrade-card is-plus" id="plus-badge-card">
+        <div class="uic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <div><div class="ut">ARGraft+ active</div><div class="ud">animated glyphs, full palette &amp; featured boosts unlocked</div></div>
+      </div>`;
+  } else {
+    cardSlot.innerHTML = `
+      <div class="upgrade-card" id="open-upgrade-card">
+        <div class="uic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <div><div class="ut">Get ARGraft+</div><div class="ud">animated glyphs, full color palette &amp; featured boosts</div></div>
+      </div>`;
+    $('#open-upgrade-card').addEventListener('click', openUpgradeModal);
+  }
+
   const grid = $('#wall-grid');
   if(mine.length === 0){
     grid.innerHTML = `<div class="wall-empty">no pieces yet.<span id="wall-empty-cta">place your first piece →</span></div>`;
     $('#wall-empty-cta')?.addEventListener('click', ()=> goToScreen('create'));
     return;
   }
+  const lib = allOwnedGlyphs();
   grid.innerHTML = mine.map(p=>`
     <button class="wall-cell" data-id="${p.id}">
       <img src="${p.photo}" alt="${p.title}">
-      <div class="glyph">${GLYPHS[p.glyph](p.c1,p.c2)}</div>
+      <div class="glyph">${lib[p.glyph](p.c1,p.c2)}</div>
       <div class="views">${p.views >= 1000 ? (p.views/1000).toFixed(1)+'k' : p.views}</div>
     </button>
   `).join('');
@@ -885,7 +1107,7 @@ function openDetail(id){
   if(!p) return;
   state.detailOpenFor = id;
   $('#detail-img').src = p.photo;
-  $('#detail-glyph').innerHTML = GLYPHS[p.glyph](p.c1, p.c2);
+  $('#detail-glyph').innerHTML = allOwnedGlyphs()[p.glyph](p.c1, p.c2);
   $('#detail-title').textContent = p.title;
   $('#detail-by').textContent = p.artist;
   $('#detail-loc').textContent = p.loc;
@@ -913,6 +1135,72 @@ $('#detail-locate').addEventListener('click', ()=>{
   closeDetail();
   goToScreen('map');
 });
+
+/* ============================================================
+   UPGRADE MODAL (ARGraft+)
+   ============================================================ */
+function openUpgradeModal(){
+  $('#upgrade-modal').classList.add('open');
+}
+function closeUpgradeModal(){
+  $('#upgrade-modal').classList.remove('open');
+}
+$('#upgrade-close').addEventListener('click', closeUpgradeModal);
+$('#upgrade-modal').addEventListener('click', e=>{ if(e.target.id === 'upgrade-modal') closeUpgradeModal(); });
+
+$$('.plan-opt').forEach(opt=>{
+  opt.addEventListener('click', ()=>{
+    state.selectedPlan = opt.dataset.plan;
+    $$('.plan-opt').forEach(o=> o.classList.toggle('selected', o === opt));
+  });
+});
+
+$('#upgrade-confirm').addEventListener('click', ()=>{
+  state.isPlus = true;
+  closeUpgradeModal();
+  renderCreateChrome();
+  renderProfile();
+  showToast(`ARGraft+ unlocked (${state.selectedPlan}) — mocked, no real charge`);
+});
+
+/* ============================================================
+   GLYPH PACK SHOP
+   ============================================================ */
+function openShopModal(){
+  renderPackGrid();
+  $('#shop-modal').classList.add('open');
+}
+function closeShopModal(){
+  $('#shop-modal').classList.remove('open');
+}
+$('#shop-close').addEventListener('click', closeShopModal);
+$('#shop-modal').addEventListener('click', e=>{ if(e.target.id === 'shop-modal') closeShopModal(); });
+
+function renderPackGrid(){
+  $('#pack-grid').innerHTML = Object.entries(PACKS).map(([key, pack])=>{
+    const owned = state.ownedPacks.includes(key);
+    const thumbs = Object.values(pack.glyphs).slice(0,3).map(fn=>
+      `<div class="pt">${fn('#9A4DFF','#39E6DC').replace('viewBox="0 0 200 200"','viewBox="0 0 200 200" width="16" height="16"')}</div>`
+    ).join('');
+    return `
+      <div class="pack-row">
+        <div class="pack-thumbs">${thumbs}</div>
+        <div class="pack-meta"><div class="t">${pack.name}</div><div class="d">${Object.keys(pack.glyphs).length} shapes · ${pack.price}</div></div>
+        <button class="pack-buy ${owned?'owned':''}" data-pack="${key}">${owned ? 'owned' : 'buy'}</button>
+      </div>
+    `;
+  }).join('');
+  $$('.pack-buy').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const key = btn.dataset.pack;
+      if(state.ownedPacks.includes(key)) return;
+      state.ownedPacks.push(key);
+      renderPackGrid();
+      renderCreateChrome();
+      showToast(`${PACKS[key].name} unlocked — mocked, no real charge`);
+    });
+  });
+}
 
 /* ============================================================
    TOAST
